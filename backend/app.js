@@ -15,15 +15,17 @@ app.use(express.json());
 // Rutas de proyectos
 app.use('/api/projects', projectRoutes);
 app.use('/api/auth', authRoutes);
-app.use('/api/tests', testRoutes); // Rutas de pruebas
+app.use('/api/tests', require('./routes/test.routes'));
 app.use('/api/defects', defectRoutes);// Rutas de defectos
 app.use('/api/reports', reportRoutes);// Rutas de reportes
 
+//sincronizacion del Modelo
 const startServer = async () => {
   try {
     await sequelize.sync();
-    console.log('Base de datos sincronizada.');
+    console.log('Modelos sincronizados correctamente.');
 
+    // Iniciar el servidor
     app.listen(3000, () => {
       console.log('Servidor corriendo en http://localhost:3000');
     });

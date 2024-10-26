@@ -2,8 +2,8 @@ const express = require('express');
 const Test = require('../models/test.model');
 const router = express.Router();
 
-// Validación del cuerpo de la solicitud para crear y actualizar pruebas
-const validateTestData = (req, res, next) => {
+// Validación del cuerpo de la solicitud para crear pruebas
+const validateTestCreation = (req, res, next) => {
   const { name, description, projectId, status } = req.body;
 
   if (!name || !description || !projectId) {
@@ -18,14 +18,15 @@ const validateTestData = (req, res, next) => {
 };
 
 // Crear una prueba asociada a un proyecto
-router.post('/', validateTestData, async (req, res) => {
+router.post('/', validateTestCreation, async (req, res) => {
   try {
-    const { name, description, projectId } = req.body;
-    const newTest = await Test.create({ name, description, projectId });
+    const { name, description, projectId, status = 'pending' } = req.body; // Valor por defecto
+
+    const newTest = await Test.create({ name, description, projectId, status });
     res.status(201).json(newTest);
   } catch (error) {
     console.error('Error al crear prueba:', error);
-    res.status(500).json({ message: 'Ocurrió un error al crear la prueba. Por favor, inténtelo de nuevo más tarde.' });
+    res.status(500).json({ message: 'Error al crear la prueba. Inténtelo de nuevo más tarde.' });
   }
 });
 
@@ -52,13 +53,13 @@ router.get('/:projectId', async (req, res) => {
 });
 
 // Actualizar estado de una prueba
-router.put('/:id', validateTestData, async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const { status } = req.body;
 
-    if (isNaN(id)) {
-      return res.status(400).json({ message: 'El ID de la prueba debe ser un número válido.' });
+    if (!['pending', 'passed', 'failed'].includes(status)) {
+      return res.status(400).json({ message: 'El estado proporcionado es inválido.' });
     }
 
     const test = await Test.findByPk(id);

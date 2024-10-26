@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db.config');
-const Defect = require('./defect.model');
 
 const Test = sequelize.define('Test', {
   id: {
@@ -12,18 +11,19 @@ const Test = sequelize.define('Test', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  status: {
-    type: DataTypes.ENUM('passed', 'failed'),
+  description: {
+    type: DataTypes.TEXT,
     allowNull: false,
+  },
+  status: {
+    type: DataTypes.ENUM('pending', 'passed', 'failed'),
+    allowNull: false,
+    defaultValue: 'pending', // Valor predeterminado
   },
   projectId: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
 });
-
-// Asociación con defectos usando el alias correcto
-Test.hasMany(Defect, { foreignKey: 'testId', as: 'TestDefects' });
-Defect.belongsTo(Test, { foreignKey: 'testId', as: 'Test' });
 
 module.exports = Test;
