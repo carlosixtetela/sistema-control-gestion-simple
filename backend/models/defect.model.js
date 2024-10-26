@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db.config');
-const Test = require('./test.model'); // Relación con la prueba
 
 const Defect = sequelize.define('Defect', {
   id: {
@@ -23,7 +22,7 @@ const Defect = sequelize.define('Defect', {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: Test,
+      model: 'Tests',
       key: 'id',
     },
   },

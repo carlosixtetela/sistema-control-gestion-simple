@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db.config');
+const Test = require('./test.model'); // Importamos el modelo Test
 
 const Project = sequelize.define('Project', {
   id: {
@@ -12,12 +13,16 @@ const Project = sequelize.define('Project', {
     allowNull: false,
   },
   description: {
-    type: DataTypes.TEXT,
+    type: DataTypes.STRING,
+    allowNull: false,
   },
   startDate: {
     type: DataTypes.DATE,
     allowNull: false,
   },
 });
+
+// Relación: Un proyecto tiene muchas pruebas
+Project.hasMany(Test, { foreignKey: 'projectId', as: 'Tests' });
 
 module.exports = Project;
