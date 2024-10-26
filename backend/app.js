@@ -3,6 +3,7 @@ const cors = require('cors');
 const sequelize = require('./config/db.config');
 const authRoutes = require('./routes/auth.routes');
 const projectRoutes = require('./routes/project.routes');
+const testRoutes = require('./routes/test.routes');
 
 const app = express();
 app.use(cors());
@@ -11,6 +12,7 @@ app.use(express.json());
 // Rutas de proyectos
 app.use('/api/projects', projectRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/tests', testRoutes); // Rutas de pruebas
 
 const startServer = async () => {
   try {
