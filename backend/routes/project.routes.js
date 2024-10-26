@@ -2,8 +2,24 @@ const express = require('express');
 const Project = require('../models/project.model');
 const router = express.Router();
 
+// Función para validar las entradas
+const validateProjectData = (req, res, next) => {
+  const { name, description, startDate } = req.body;
+
+  if (!name || !description || !startDate) {
+    return res.status(400).json({ message: 'Todos los campos son obligatorios.' });
+  }
+
+  const startDateObj = new Date(startDate);
+  if (isNaN(startDateObj.getTime())) {
+    return res.status(400).json({ message: 'La fecha de inicio es inválida.' });
+  }
+
+  next(); // Si todo es válido, continúa con la solicitud
+};
+
 // Crear un nuevo proyecto
-router.post('/', async (req, res) => {
+router.post('/', validateProjectData, async (req, res) => {
   try {
     const { name, description, startDate } = req.body;
     const newProject = await Project.create({ name, description, startDate });
@@ -26,7 +42,7 @@ router.get('/', async (req, res) => {
 });
 
 // Actualizar un proyecto
-router.put('/:id', async (req, res) => {
+router.put('/:id', validateProjectData, async (req, res) => {
   try {
     const { id } = req.params;
     const { name, description, startDate } = req.body;
