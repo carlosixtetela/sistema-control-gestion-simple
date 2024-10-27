@@ -27,7 +27,7 @@ const startServer = async () => {
 
     // Iniciar el servidor
     app.listen(process.env.PORT || 3000, () => {
-      console.log('Servidor corriendo en http://157.230.210.255:3000');
+      console.log('Servidor corriendo en http://localhost:3000');
     });
   } catch (error) {
     console.error('Error al iniciar el servidor:', error);

@@ -19,7 +19,7 @@ const Dashboard = () => {
 
   const fetchActiveProjects = async () => {
     try {
-      const response = await axios.get('http://157.230.210.255:3000/api/projects?status=active');
+      const response = await axios.get('http://localhost:3000/api/projects?status=active');
       setProjects(response.data);
     } catch (error) {
       console.error('Error al obtener proyectos activos:', error);

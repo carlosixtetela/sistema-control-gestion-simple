@@ -11,7 +11,7 @@ const Report = () => {
 
   const fetchReport = async () => {
     try {
-      const response = await axios.get('http://157.230.210.255:3000/api/reports'); // Verifica la URL
+      const response = await axios.get('http://localhost:3000/api/reports'); // Verifica la URL
       setReport(response.data);
     } catch (error) {
       console.error('Error al generar el reporte:', error);

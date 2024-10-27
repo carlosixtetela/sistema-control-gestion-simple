@@ -13,7 +13,7 @@ const ReportByProject = () => {
 
   const fetchProjects = async () => {
     try {
-      const response = await axios.get('http://157.230.210.255:3000/api/projects');
+      const response = await axios.get('http://localhost:3000/api/projects');
       setProjects(response.data);
     } catch (error) {
       console.error('Error al obtener proyectos:', error);
@@ -22,7 +22,7 @@ const ReportByProject = () => {
 
   const fetchReport = async (projectId) => {
     try {
-      const response = await axios.get(`http://157.230.210.255:3000/api/reports/${projectId}`);
+      const response = await axios.get(`http://localhost:3000/api/reports/${projectId}`);
       setReport(response.data);
     } catch (error) {
       console.error('Error al generar reporte:', error);
