@@ -15,7 +15,7 @@ const ProjectManager = () => {
 
   const fetchProjects = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/projects');
+      const response = await axios.get('http://157.230.210.255:3000/api/projects');
       setProjects(response.data);
     } catch (error) {
       console.error('Error al obtener proyectos:', error);
@@ -33,13 +33,13 @@ const ProjectManager = () => {
 
     try {
       if (editingProject) {
-        await axios.put(`http://localhost:3000/api/projects/${editingProject.id}`, {
+        await axios.put(`http://157.230.210.255:3000/api/projects/${editingProject.id}`, {
           name,
           description,
           startDate,
         });
       } else {
-        await axios.post('http://localhost:3000/api/projects', {
+        await axios.post('http://157.230.210.255:3000/api/projects', {
           name,
           description,
           startDate,
@@ -64,7 +64,7 @@ const ProjectManager = () => {
     if (!confirm) return;
 
     try {
-      await axios.delete(`http://localhost:3000/api/projects/${id}`);
+      await axios.delete(`http://157.230.210.255:3000/api/projects/${id}`);
       fetchProjects();
     } catch (error) {
       console.error('Error al eliminar proyecto:', error);

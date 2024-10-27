@@ -19,7 +19,7 @@ const ProjectManagement = () => {
 
   const fetchTests = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/tests/${projectId}`);
+      const response = await axios.get(`http://157.230.210.255:3000/api/tests/${projectId}`);
       setTests(response.data);
     } catch (error) {
       console.error('Error al obtener pruebas:', error);
@@ -29,7 +29,7 @@ const ProjectManagement = () => {
   const handleCreateTest = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3000/api/tests', {
+      await axios.post('http://157.230.210.255:3000/api/tests', {
         name: newTestName,
         description: newTestDescription,
         projectId,
@@ -51,7 +51,7 @@ const ProjectManagement = () => {
   const handleUpdateTest = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:3000/api/tests/${editTest.id}`, {
+      await axios.put(`http://157.230.210.255:3000/api/tests/${editTest.id}`, {
         status: editStatus,
       });
       setEditTest(null);
@@ -67,7 +67,7 @@ const ProjectManagement = () => {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:3000/api/tests/${id}`);
+      await axios.delete(`http://157.230.210.255:3000/api/tests/${id}`);
       fetchTests();
     } catch (error) {
       console.error('Error al eliminar prueba:', error);
