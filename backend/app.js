@@ -26,7 +26,7 @@ const startServer = async () => {
     console.log('Modelos sincronizados correctamente.');
 
     // Iniciar el servidor
-    app.listen(3000, () => {
+    app.listen(process.env.PORT || 3000, () => {
       console.log('Servidor corriendo en http://localhost:3000');
     });
   } catch (error) {
