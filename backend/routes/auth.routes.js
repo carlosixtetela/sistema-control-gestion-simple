@@ -5,7 +5,7 @@ const router = express.Router();
 // Ruta de Login
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
-
+console.log(req.body)
   try {
     const user = await User.findOne({ where: { email, password } });
     if (!user) {
