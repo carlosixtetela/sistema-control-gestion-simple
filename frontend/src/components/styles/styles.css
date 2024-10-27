@@ -1,0 +1,577 @@
+/* ===================================
+   Estilos Globales
+=================================== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', Arial, sans-serif;
+  background: linear-gradient(to right, #76b852, #8DC26F); /* Fondo degradado */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===================================
+   Estilos del Login
+=================================== */
+.container {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.form input {
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.form button {
+  text-transform: uppercase;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.form button:hover {
+  background: #43A047;
+}
+
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+
+.form .message a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+.form .message a:hover {
+  text-decoration: underline;
+}
+
+/* ===================================
+   Estilos del Dashboard
+=================================== */
+.dashboard-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-header {
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Navegación del Dashboard */
+.dashboard-nav {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+  background-color: #4caf50;
+  padding: 12px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+  background-color: #43a047;
+}
+
+/* Botón de Cerrar Sesión */
+.logout-button {
+  background-color: #ff5252;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #e53935;
+}
+
+/* Lista de Proyectos */
+.projects-header {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.projects-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.project-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.project-name, .project-description, .project-date {
+  margin-right: 10px;
+}
+
+.manage-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%; /* Botones del mismo tamaño */
+  max-width: 200px;
+}
+
+.manage-button:hover {
+  background-color: #43a047;
+}
+
+/* ===================================
+   Estilos Responsivos
+=================================== */
+@media (max-width: 768px) {
+  .dashboard-nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .project-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+/* Lista de Pruebas */
+.projects-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.project-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.project-item span {
+  margin-right: 10px;
+}
+
+.manage-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.manage-button:hover {
+  background-color: #43a047;
+}
+
+.delete-button {
+  background-color: #e53935;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+/* Lista de Pruebas */
+.tests-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.test-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.test-info {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.test-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.test-status {
+  color: #777;
+}
+
+.test-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.manage-button, .delete-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.manage-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.manage-button:hover {
+  background-color: #43a047;
+}
+
+.delete-button {
+  background-color: #e53935;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+/* Formulario de Gestión de Proyectos */
+.form-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* Lista de Proyectos */
+.projects-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.project-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.project-info {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.project-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.manage-button, .delete-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.manage-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.manage-button:hover {
+  background-color: #43a047;
+}
+
+.delete-button {
+  background-color: #e53935;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+/* Informe General */
+.report-summary {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.report-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 45%;
+  text-align: center;
+}
+
+.report-card h2 {
+  color: #4caf50;
+  margin-bottom: 10px;
+}
+
+.report-card p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.report-section {
+  margin-top: 30px;
+}
+
+.report-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.report-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.report-status {
+  font-weight: bold;
+  color: #4caf50;
+}
+
+/* Estilo para el mensaje de carga */
+.loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #777;
+}
+/* Informe por Proyecto */
+.report-summary {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.report-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 45%;
+  text-align: center;
+}
+
+.report-card h2 {
+  color: #4caf50;
+  margin-bottom: 10px;
+}
+
+.report-card p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.report-subsection {
+  margin-top: 30px;
+}
+
+.report-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.report-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.report-status {
+  font-weight: bold;
+  color: #4caf50;
+}
+
+/* Select Estilizado */
+.form select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 16px;
+}
+/* Header del App */
+.app-header {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #4CAF50;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.app-logo {
+  height: 50px;
+  margin-right: 15px;
+}
+
+.app-title {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+/* Header del Dashboard */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #4CAF50;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-logo {
+  height: 50px;
+  margin-right: 15px;
+}
+
+.dashboard-title {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Botón de Cerrar Sesión */
+.logout-button {
+  background-color: #ff5252;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #e53935;
+}
+/* Header del App */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #4CAF50;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.app-logo {
+  height: 50px;
+  margin-right: 15px;
+}
+
+.app-title {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Botón de Cerrar Sesión */
+.logout-button {
+  background-color: #ff5252;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #e53935;
+}
