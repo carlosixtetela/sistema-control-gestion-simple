@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import './styles/styles.css'; // Importar los estilos adaptados del CodePen
 
 const Login = () => {
@@ -8,20 +7,20 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('http://157.230.210.255:3000/api/auth/login', {
-        email,
-        password,
-      });
+  // Credenciales quemadas (Hardcoded)
+  const validCredentials = {
+    email: 'admin@example.com',
+    password: 'password123',
+  };
 
-      if (response.status === 200) {
-        localStorage.setItem('isLoggedIn', 'true'); // Guardar sesión
-        navigate('/dashboard'); // Redirigir al Dashboard
-      }
-    } catch (error) {
-      console.error('Error en el login:', error);
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    // Verificar las credenciales ingresadas con las quemadas
+    if (email === validCredentials.email && password === validCredentials.password) {
+      localStorage.setItem('isLoggedIn', 'true'); // Guardar sesión
+      navigate('/dashboard'); // Redirigir al Dashboard
+    } else {
       alert('Credenciales incorrectas. Inténtalo de nuevo.');
     }
   };
