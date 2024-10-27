@@ -22,7 +22,7 @@ app.use('/api/reports', reportRoutes);// Rutas de reportes
 //sincronizacion del Modelo
 const startServer = async () => {
   try {
-    await sequelize.sync();
+    await sequelize.sync({ force: false, alter: false });
     console.log('Modelos sincronizados correctamente.');
 
     // Iniciar el servidor
