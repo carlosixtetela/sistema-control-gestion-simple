@@ -14,7 +14,7 @@ console.log(req.body)
     res.json({ message: 'Login exitoso.', user });
   } catch (error) {
     console.error('Error en el login:', error);
-    res.status(500).json({ message: 'Error del servidor.' });
+    res.status(500).json({ message: 'Error del servidor.', error: 'Error: ' + error.message });
   }
 });
 
